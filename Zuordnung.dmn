@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions_0wd15yg" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="Zuordnung">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Mehrere studiengänge">
+        <inputExpression id="inputExpression1" typeRef="boolean" />
+      </input>
+      <output id="output1" label="Studiengang" name="" typeRef="string" />
+      <rule id="row-496640351-9">
+        <description>Analyse einzelnen Studienganges</description>
+        <inputEntry id="UnaryTests_1wl83el">        <text>true</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0u3iijw">        <text><![CDATA["Studiengang Bezeichnung"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-10">
+        <description>Analyse Studienganges</description>
+        <inputEntry id="UnaryTests_1mc4udr">        <text>false</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1rjosnn">        <text><![CDATA["Studiengang Bezeichnung"]]></text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

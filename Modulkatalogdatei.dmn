@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions_031zg7y" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="Modulkatalogdatei">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Datei">
+        <inputExpression id="inputExpression1" typeRef="string" />
+      </input>
+      <output id="output1" label="Datei vorhanden" name="" typeRef="boolean" />
+      <rule id="row-496640351-19">
+        <description>Datei zur Analyse liegt vor, falsche Format, kann nicht analysiert werden</description>
+        <inputEntry id="UnaryTests_0xq3tq4">        <text><![CDATA["Datei nicht PDF"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1c87xvb">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-20">
+        <description>Datei zur Analyse liegt nicht vor</description>
+        <inputEntry id="UnaryTests_08eyd9q">        <text><![CDATA["Datei"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_126r5yu">        <text>false</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-21">
+        <description>Datei zur Analyse liegt vor und kann analysiert werden</description>
+        <inputEntry id="UnaryTests_1qp2vgf">        <text><![CDATA["Datei+PDF"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_05deujz">        <text>true</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

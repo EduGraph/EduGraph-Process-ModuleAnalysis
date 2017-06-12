@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions_0e518qx" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="Startseite">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Seitenanzahl Anfang">
+        <inputExpression id="inputExpression1" typeRef="integer" />
+      </input>
+      <output id="output1" label="Vorhanden" name="" typeRef="boolean" />
+      <rule id="row-496640351-11">
+        <description>Analyse-Service anstupsen</description>
+        <inputEntry id="UnaryTests_0zw7vag">        <text>1</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0iatbrq">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-12">
+        <description>Analyse nicht möglich, da diese Seite nicht existiert</description>
+        <inputEntry id="UnaryTests_1q7a8fw">        <text>1</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1dfzorh">        <text>false</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

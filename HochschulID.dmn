@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions_08pfbjn" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="HochschulID">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="ID">
+        <inputExpression id="inputExpression1" typeRef="string" />
+      </input>
+      <output id="output1" label="Hochschule" name="" typeRef="boolean" />
+      <rule id="row-496640351-22">
+        <description>Hochschule kann gefunden werden/Wurde gefunden</description>
+        <inputEntry id="UnaryTests_0kc3zvv">        <text><![CDATA["ID der Hochschule"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_14op36u">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-23">
+        <description>Hoschschule kann nicht gefunden werden/Wurde nicht gefunden</description>
+        <inputEntry id="UnaryTests_06zdcdb">        <text><![CDATA["ID der Hochschule"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1kqiaq7">        <text>false</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

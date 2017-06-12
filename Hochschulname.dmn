@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions_0d1dfzy" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="Hochschulname">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Hochschulname">
+        <inputExpression id="inputExpression1" typeRef="string" />
+      </input>
+      <output id="output1" label="Analyse Service anstupsen" name="" typeRef="boolean" />
+      <rule id="row-496640351-5">
+        <description>Analyse-Service anstupsen</description>
+        <inputEntry id="UnaryTests_01gfyaf">        <text><![CDATA["Name einer Hochschule"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_06m5366">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-6">
+        <description>Analys-Service kann nicht angestupst werden</description>
+        <inputEntry id="UnaryTests_0pjuf75">        <text><![CDATA["Name einer Hochschule"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1d9la3r">        <text>false</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

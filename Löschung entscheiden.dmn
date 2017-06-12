@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_03lgn5s" name="Decision" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Decision_13nychf" name="Löschung entscheiden">
+    <extensionElements>
+      <biodi:bounds x="200" y="200" width="180" height="80" />
+    </extensionElements>
+    <decisionTable>
+      <input id="InputClause_1q79mt6" label="Hochschule vorhanden">
+        <inputExpression id="LiteralExpression_056t2ll" typeRef="boolean" />
+      </input>
+      <output id="output_1" label="vorhandenen Datensatz löschen" typeRef="boolean" />
+      <rule id="row-738731904-2">
+        <description>Vorherige Daten werden gelöscht.</description>
+        <inputEntry id="UnaryTests_11rf7ie">        <text>true</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0pqbwnv">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-738731904-3">
+        <description>Sind keine Daten vorhanden, dann können keine gelöscht werden.</description>
+        <inputEntry id="UnaryTests_1iyyn89">        <text>false</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_08x4njg">        <text>false</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

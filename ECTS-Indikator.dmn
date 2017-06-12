@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions_1qawpmy" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="ECTS-Indikator">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="ECTS Punkte">
+        <inputExpression id="inputExpression1" typeRef="integer" />
+      </input>
+      <output id="output1" label="Vorhandene ECTS Punkte" name="" typeRef="integer" />
+      <rule id="row-496640351-18">
+        <description>Keine gefunden</description>
+        <inputEntry id="UnaryTests_1rd83fu">        <text>180</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0rbj4xh">        <text>0</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-15">
+        <description>Ganze Studiengang</description>
+        <inputEntry id="UnaryTests_0uhoh17">        <text>180</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0knf6lk">        <text>180</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-16">
+        <description>Ein Semester</description>
+        <inputEntry id="UnaryTests_0129dc3">        <text>180</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_132ulrg">        <text>30</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-17">
+        <description>Ein Modul</description>
+        <inputEntry id="UnaryTests_0pcmxtj">        <text>180</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_025528p">        <text>6</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

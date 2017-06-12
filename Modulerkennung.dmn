@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions_1mraxta" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="Modulerkennung">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Modulname">
+        <inputExpression id="inputExpression1" typeRef="string" />
+      </input>
+      <output id="output1" label="Modul vorhanden" name="" typeRef="boolean" />
+      <rule id="row-496640351-7">
+        <description>Bestimmtes Modul gefunden</description>
+        <inputEntry id="UnaryTests_1u32lum">        <text><![CDATA["Name des Moduls"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1ixwdbs">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-8">
+        <description>Bestimmtes Modul nicht gefunden</description>
+        <inputEntry id="UnaryTests_1rnj3zk">        <text><![CDATA["Name des Moduls"]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_195hxzs">        <text>false</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

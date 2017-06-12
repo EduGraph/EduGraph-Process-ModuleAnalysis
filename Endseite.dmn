@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions_10jqs7p" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="Endseite">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Seitenanzahl Ende">
+        <inputExpression id="inputExpression1" typeRef="integer" />
+      </input>
+      <output id="output1" label="Vorhanden" name="" typeRef="boolean" />
+      <rule id="row-496640351-13">
+        <description>Die Seite ist vorhanden. Analyse erfolgt bis diese Seite</description>
+        <inputEntry id="UnaryTests_03v4uvn">        <text>180</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_15yqm5m">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-496640351-14">
+        <description>Die Seite ist nicht vorhanden. Analyse erfolgt bis zur aller letzter Seite</description>
+        <inputEntry id="UnaryTests_012zg8k">        <text>180</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1qeyvmt">        <text>false</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
