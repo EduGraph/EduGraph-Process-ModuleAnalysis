@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.8.2">
+  <bpmn:collaboration id="Collaboration_1qog7vi">
+    <bpmn:participant id="analyse-update" name="AnalyseUpdate" processRef="AnalyseUpdate" />
+  </bpmn:collaboration>
+  <bpmn:process id="AnalyseUpdate" name="AnalyseUpdate" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Updatebenachrichtigung eingegangen">
+      <bpmn:outgoing>SequenceFlow_019xt3o</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_1dhkipj" name="Analyseprozess abgeschlossen">
+      <bpmn:incoming>SequenceFlow_1ca4rec</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="EndEvent_1filphz" name="Fehlermeldung versenden">
+      <bpmn:incoming>SequenceFlow_034umaa</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:scriptTask id="Task_06hwosj" name="Eingaben validieren">
+      <bpmn:incoming>SequenceFlow_019xt3o</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ju9g0h</bpmn:outgoing>
+      <bpmn:script><![CDATA[<scriptTask id="theScriptTask" name="Execute script" scriptFormat="groovy">
+  <script>
+    sum = 0
+    for ( i in inputArray ) {
+      sum += i
+    }
+  </script>
+</scriptTask>]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:serviceTask id="Task_1m5nxi9" name="vorherige Extraktion löschen" camunda:class="org.camunda.bpm.analyseupdate.ServiceTask">
+      <bpmn:incoming>SequenceFlow_0ju9g0h</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_00kjde6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="BoundaryEvent_09z5n53" name="ungültige Dateneingabe" attachedToRef="Task_06hwosj">
+      <bpmn:outgoing>SequenceFlow_034umaa</bpmn:outgoing>
+      <bpmn:errorEventDefinition />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_019xt3o" sourceRef="StartEvent_1" targetRef="Task_06hwosj" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ca4rec" sourceRef="Task_1qbz9fz" targetRef="EndEvent_1dhkipj" />
+    <bpmn:sequenceFlow id="SequenceFlow_034umaa" sourceRef="BoundaryEvent_09z5n53" targetRef="EndEvent_1filphz" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ju9g0h" sourceRef="Task_06hwosj" targetRef="Task_1m5nxi9" />
+    <bpmn:sequenceFlow id="SequenceFlow_00kjde6" sourceRef="Task_1m5nxi9" targetRef="Task_1qbz9fz" />
+    <bpmn:callActivity id="Task_1qbz9fz" name="Modulkatalog Analyse durchführen" calledElement="Demo">
+      <bpmn:incoming>SequenceFlow_00kjde6</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ca4rec</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:textAnnotation id="TextAnnotation_1g2dllw">    <bpmn:text>Nachrichten versenden End Ereignis</bpmn:text>
+</bpmn:textAnnotation>
+    <bpmn:association id="Association_1whengn" sourceRef="StartEvent_1" targetRef="TextAnnotation_0n4j315" />
+    <bpmn:association id="Association_00cochl" sourceRef="EndEvent_1filphz" targetRef="TextAnnotation_1g2dllw" />
+    <bpmn:textAnnotation id="TextAnnotation_0n4j315">    <bpmn:text><![CDATA[Start mit Nachrichten-Empfang - Registrierung aus Prozess "Anfrage bearbeiten"]]></bpmn:text>
+</bpmn:textAnnotation>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1qog7vi">
+      <bpmndi:BPMNShape id="Participant_12ai1k1_di" bpmnElement="analyse-update">
+        <dc:Bounds x="110" y="9" width="780" height="407" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="186" y="171" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="160" y="207" width="89" height="36" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_019xt3o_di" bpmnElement="SequenceFlow_019xt3o">
+        <di:waypoint xsi:type="dc:Point" x="222" y="189" />
+        <di:waypoint xsi:type="dc:Point" x="275" y="189" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="204" y="168" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ju9g0h_di" bpmnElement="SequenceFlow_0ju9g0h">
+        <di:waypoint xsi:type="dc:Point" x="375" y="189" />
+        <di:waypoint xsi:type="dc:Point" x="442" y="189" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="364" y="168" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_00kjde6_di" bpmnElement="SequenceFlow_00kjde6">
+        <di:waypoint xsi:type="dc:Point" x="542" y="189" />
+        <di:waypoint xsi:type="dc:Point" x="610" y="189" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="531" y="167.5" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0n4j315_di" bpmnElement="TextAnnotation_0n4j315">
+        <dc:Bounds x="161" y="29" width="146" height="61" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1whengn_di" bpmnElement="Association_1whengn">
+        <di:waypoint xsi:type="dc:Point" x="204" y="171" />
+        <di:waypoint xsi:type="dc:Point" x="204" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1dhkipj_di" bpmnElement="EndEvent_1dhkipj">
+        <dc:Bounds x="803" y="171" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="782" y="210" width="79" height="24" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ca4rec_di" bpmnElement="SequenceFlow_1ca4rec">
+        <di:waypoint xsi:type="dc:Point" x="710" y="189" />
+        <di:waypoint xsi:type="dc:Point" x="803" y="189" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="711.5" y="167.5" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BoundaryEvent_0c54psz_di" bpmnElement="BoundaryEvent_09z5n53">
+        <dc:Bounds x="357" y="211" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="382" y="249" width="67" height="24" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1filphz_di" bpmnElement="EndEvent_1filphz">
+        <dc:Bounds x="803" y="333" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="785" y="372" width="72" height="24" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_034umaa_di" bpmnElement="SequenceFlow_034umaa">
+        <di:waypoint xsi:type="dc:Point" x="376" y="247" />
+        <di:waypoint xsi:type="dc:Point" x="376" y="351" />
+        <di:waypoint xsi:type="dc:Point" x="803" y="351" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="346" y="293" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ScriptTask_147tc64_di" bpmnElement="Task_06hwosj">
+        <dc:Bounds x="275" y="149" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0zz6iu6_di" bpmnElement="Task_1m5nxi9">
+        <dc:Bounds x="442" y="149" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1g2dllw_di" bpmnElement="TextAnnotation_1g2dllw">
+        <dc:Bounds x="772" y="263" width="98" height="52" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_00cochl_di" bpmnElement="Association_00cochl">
+        <di:waypoint xsi:type="dc:Point" x="821" y="333" />
+        <di:waypoint xsi:type="dc:Point" x="821" y="315" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="CallActivity_15gr9f8_di" bpmnElement="Task_1qbz9fz">
+        <dc:Bounds x="610" y="149" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
